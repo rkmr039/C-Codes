@@ -115,8 +115,8 @@ void main()
 					break;
 				case 7:
 					exit(0);
+				default: 
+					printf("\nInvalid Input \n");
 			}
-			printf("\nIf Want to continue press 1: \n");
-			scanf("%d",&ch);
 		}getch();
 }
