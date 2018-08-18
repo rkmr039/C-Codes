@@ -11,7 +11,7 @@ int front = 0;
 int rear = 0;
 int len;
 int GetCurrentSize();
-void enQueue(int item);
+void enQueue();
 int deQueue();
 void DisplayQueue();
 
@@ -25,32 +25,30 @@ void main()
 
 	while(1)
 	{
-		printf("\n1.Insertion\n2.Deletion\n3.Display Queue\n4.Current Queue Size\n5.Exit ");
+		printf("\n1.Insertion\n2.Deletion\n3.Display Queue\n4.Exit ");
 		printf("\nEnter Your Choice: ");scanf("%d",&option);
 
 		switch(option)
 		{
 			case 1:
-				printf("\nEnter Value: ");scanf("%d",&temp);
-				enQueue(temp);
+				enQueue();
 				break;
 			case 2:
 				temp = deQueue();
-				printf("\nDe Queued Item: %d\n",temp);
+				if(temp !=(int)NULL)
+					printf("\nDe Queued Item: %d\n",temp);
 				break;
 			case 3:
 				DisplayQueue();
 				break;
 			case 4:
-				printf("\nCurrent Size of Queue : %d\n",GetCurrentSize());
-				break;
-			case 5:
 				exit(0);
 		}
 	}
 }
-void enQueue(int item)
+void enQueue()
 {
+	int temp;
 	// check if the QUEUE is full
 	if (((front+rear)-1)%len == 0)
 	{
@@ -59,15 +57,15 @@ void enQueue(int item)
 	else // else insert
 	{
 		// if the QUEUE is empty
+		printf("\nEnter Value: ");scanf("%d",&temp);
 		if(front == 0)
 			{front = 1;rear=1;}
 		else
 		{
-			//GetCurrentSize();
-			rear = (rear+1)%len;
-			
+			rear++;
+			if(rear > len) rear = 1;			
 		}
-		QUEUE[rear] = item;
+		QUEUE[rear] = temp;
 	}
 }
 int deQueue()
@@ -80,6 +78,7 @@ int deQueue()
 	}
 	else // else delete 
 	{
+		temp = QUEUE[front];
 		// check if the item is last one 
 		if(front == rear)
 		{
@@ -89,7 +88,7 @@ int deQueue()
 		{
 			front = (front+1)%len;
 		}
-		temp = QUEUE[rear];
+		
 	}
 	return temp;
 }
@@ -101,25 +100,30 @@ int GetCurrentSize()
 		size = (rear-front)+1;
 	else
 		size = len-((front-rear)-1);
-
-	printf("\nFRONT: %d",front);
-	printf("\nREAR: %d",rear);
 	return size;
 }
 void DisplayQueue()
 {
 	int i,temp;
+	printf("\nFRONT: %d",front);
+	printf("\nREAR: %d",rear);
 	if(front == 0)
 	{
 		printf("\nQueue is EMPTY\n");
 	}
 	else
 	{
+		
 		temp = GetCurrentSize();
+		printf("\nSIZE: %d",temp);
 		printf("\nFRONT | ");
-		for(i=1;i<=temp;i++)
+		i = front;
+		while(temp--)
 		{
 			printf(" %d ",QUEUE[i]);
-		}	printf(" | REAR\n");
+			i++;
+			if(i>len) i=1;
+		}	
+		printf(" | REAR\n");
 	}
 }
