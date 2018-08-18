@@ -1,5 +1,6 @@
 /*
 		Circular QUEUE implementation using Dynamic Array
+		indexing starts with 1
 */
 
 #include<stdio.h>
