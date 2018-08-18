@@ -9,7 +9,7 @@
 int *QUEUE = NULL;
 int front = 0;
 int rear = 0;
-int len;
+int len = 0;
 int GetCurrentSize();
 void enQueue();
 int deQueue();
@@ -19,10 +19,12 @@ void main()
 {
 	int option,temp;
 	printf("\n===============Circular Queue================\n\n");
-	printf("\nEnter the len of the QUEUE : ");
-	scanf("%d",&len);
+	do
+	{
+		printf("\nEnter the length[>1] of QUEUE : ");
+		scanf("%d",&len);
+	}while(len<1);
 	QUEUE = (int*)malloc(sizeof(int)*len);
-
 	while(1)
 	{
 		printf("\n1.Insertion\n2.Deletion\n3.Display Queue\n4.Exit ");
@@ -52,7 +54,7 @@ void enQueue()
 	// check if the QUEUE is full
 	if (((front+rear)-1)%len == 0)
 	{
-		printf("\nOverflow\n");
+		printf("\n\t\tOverflow\n");
 	}
 	else // else insert
 	{
@@ -74,7 +76,7 @@ int deQueue()
 	// check if the QUEUE is already empty
 	if(front == 0)
 	{
-		printf("\nUnderflow\n");
+		printf("\n\t\tUnderflow\n");
 	}
 	else // else delete 
 	{
@@ -109,7 +111,7 @@ void DisplayQueue()
 	printf("\nREAR: %d",rear);
 	if(front == 0)
 	{
-		printf("\nQueue is EMPTY\n");
+		printf("\n\t\tQueue is EMPTY\n");
 	}
 	else
 	{
