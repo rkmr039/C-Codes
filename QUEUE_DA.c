@@ -1,5 +1,5 @@
 /*
-		Circular QUEUE implementation using Dyna,ic Array
+		Circular QUEUE implementation using Dynamic Array
 */
 
 #include<stdio.h>
