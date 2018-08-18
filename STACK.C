@@ -76,11 +76,11 @@ void printStack(struct ArrayStack *s)
 }
 void main()
 {
-	int option,temp,ch=1;
+	int option,temp;
 	struct ArrayStack *s;clrscr();
 	printf("\n\n===========Stack=============\n");
 	s = createStack(5);
-	while(ch == 1)
+	while(1)
 		{
 			printf("\n1.Push\n2.Pop\n3.IsFull\n4.IsEmpty\n5.Top\n6.Print Stack\n7.Exit\n");
 			printf("Enter your choice: ");scanf("%d",&option);
