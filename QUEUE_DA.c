@@ -52,7 +52,7 @@ void enQueue()
 {
 	int temp;
 	// check if the QUEUE is full
-	if (((front+rear)-1)%len == 0)
+	if (front == (1+rear)%len)
 	{
 		printf("\n\t\tOverflow\n");
 	}
